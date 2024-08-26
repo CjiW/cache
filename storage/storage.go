@@ -1,13 +1,19 @@
-package main
+package storage
 
 import "time"
 
 const (
-	StorageAccessConst = time.Millisecond * 10
+	StorageAccessConst = time.Millisecond
 )
 
 type Storage struct {
 	data []interface{}
+}
+
+func NewStorage(size int64) Storage {
+	return Storage {
+		data: make([]interface{}, size),
+	}
 }
 
 func (s *Storage) Get(key int64) interface{} {
